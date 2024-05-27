@@ -1,0 +1,18 @@
+name: "📦 Release to test"
+
+on:
+  release:
+    types:
+      - "released"
+
+jobs:
+  confirm-properties:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Release version: ${{ github.event.release.tag_name }}"
+          echo "Release name: ${{ github.event.release.name }}"
+          echo "Release description: ${{ github.event.release.body }}"
+          echo "Is Draft?  ${{ github.event.release.draft }}"
+          echo "Is Prerelease?  ${{ github.event.release.prerelease }}"
+          echo "Release author: ${{ github.event.release.author.login }}"
